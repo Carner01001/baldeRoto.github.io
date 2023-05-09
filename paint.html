@@ -1,0 +1,91 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+    var pantalla = document.querySelector("canvas");
+    var fondo = pantalla.getContext("2d");
+    var pincel1 = pantalla.getContext("2d");
+    var pincel2 = pantalla.getContext("2d");
+    var pincel3 = pantalla.getContext("2d");
+    var circulo = pantalla.getContext("2d");
+    var color="blue";
+    var x;
+    var y;
+
+    fondo.fillStyle = "grey";
+    fondo.fillRect(0, 0, 600, 400);
+
+    pincel1.fillStyle = "red";
+    pincel1.fillRect(0, 0, 50, 50);
+
+    pincel2.fillStyle = "green";
+    pincel2.fillRect(50, 0, 50, 50);
+
+    pincel3.fillStyle = "blue";
+    pincel3.fillRect(100, 0, 50, 50);
+
+
+
+    function hacerClick(evento) {
+
+
+        x = evento.pageX;
+        y = evento.pageY;
+
+
+        if (x <= 150 && y <= 50) {
+            if ((x < 50) && (y < 50)) {
+                color = "red";
+                
+
+            }
+            if ((x > 50 && x < 100) && (y < 50)) {
+                color = "green";
+                
+
+            }
+            if ((x > 100 && x <= 150) && (y < 50)) {
+                color = "blue";
+                
+
+            }
+
+        }
+        else {
+
+            circulo.fillStyle = color;
+            circulo.beginPath();
+            circulo.arc(x, y, 5, 0, 2 * 3.14);
+            circulo.fill();
+
+
+
+
+
+
+
+
+        }
+
+
+
+
+    }
+
+
+
+
+
+
+
+    pantalla.onclick = hacerClick;
+    pantalla.onmousedown = hacerClick;
+
+    pantalla.onmousemove = hacerClick;
+
+
+
+
+
+
+
+</script>
